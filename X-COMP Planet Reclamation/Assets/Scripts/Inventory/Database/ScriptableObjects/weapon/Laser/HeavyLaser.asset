@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834375054efa3734bbcc3ba71071c06c, type: 3}
+  m_Name: HeavyLaser
+  m_EditorClassIdentifier: 
+  id: 23
+  itemName: Heavy Laser
+  category: 0
+  icon: {fileID: 0}
+  prefab: {fileID: 7475068471104089480, guid: d6f598ef30d1be7459b52971ff24df50, type: 3}
+  dropChance: 0.3
+  weaponCategory: 2
+  weaponSubType: 12
+  armorType: 0
+  consumableType: 0
+  isStackable: 0
+  maxStackSize: 1
+  baseStats:
+    weight: 0
+    damage: 60
+    penetration: 0
+    accuracy: 75
+    range: 0
+    ammo: 8
+    fireRate: 0
+    armorValue: 0
+    healthRestored: 0
+    staminaRestored: 0
+    maxUses: 0
+    durability: 0
+    cooldown: 0
+    healthIncrease: 0
+  isUnique: 0

@@ -1,0 +1,12 @@
+{
+    "id": 1,
+    "masterId": 2,
+    "ammo": 3,
+    "capacity": 4,
+    "grip": 5,
+    "type": "gun",
+    "damage": 6,
+    "size": 7,
+    "weight": 8,
+    "accuracy": 9
+}

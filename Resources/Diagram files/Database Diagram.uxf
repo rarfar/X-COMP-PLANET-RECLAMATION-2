@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>320</y>
+      <w>184</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>Character
+--
+name:             string            M PI
+statistics:         C-Stats        M F
+weapon-l:        Weapon      M F
+weapon-r:        Weapon      M F
+eqpmt-head:    Equipment M F
+eqpmt-body:    Equipment M F
+eqpmt-cape:    Equipment M F
+eqpmt-pants:   Equipment M F
+eqpmt-l-arm:    Equipment M F
+eqpmt-r-arm:    Equipment M F
+eqpmt-l-leg:      Equipment M F
+eqpmt-r-leg:     Equipment M F
+eqpmt-l-hand:  Equipment M F
+eqpmt-r-hand:  Equipment M F
+eqpmt-l-foot:    Equipment M F
+eqpmt-r-foot:    Equipment M F
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>648</y>
+      <w>168</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Equipment
+--
+id:             int M PI
+master-id: int M
+defense:   int M
+damage:   int M
+wear:        int M
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>568</y>
+      <w>224</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Inventory
+--
+id:                       int                         M PI
+equipment:         Array[Equipment] M F
+weapons:           Array[Weapons]   M F
+max-equimpent: int                         M
+max-weapons:   int                         M</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>0</y>
+      <w>168</w>
+      <h>224</h>
+    </coordinates>
+    <panel_attributes>C-Stats
+--
+character:              string M PI F
+rank:                       int     M
+exp:                        int     M
+time-units:              int     M
+stamina:                 int     M
+health:                    int     M
+max-health:            int     M
+bravery:                  int     M
+reactions:                int    M
+firing-accuracy:       int    M
+throwing-accuracy: int    M
+melee-accuracy:     int    M
+strength:                 int    M
+psi-strength:           int    M
+psi-skill:                  int    M
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>112</y>
+      <w>168</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Weapon
+--
+id:             int      M PI
+master-id: int      M
+ammo:      int      M
+capacity:   int      M
+grip:          int      M
+type:         string  M
+damage:   int       M
+size:          int      M
+weight:      int      M
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>368</y>
+      <w>208</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Save
+--
+id:               int                        M PI
+level:          int                        M
+characters: Array[Character] M F
+inventory:   Inventory             M F</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>128</x>
+      <y>656</y>
+      <w>224</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;260.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>456</y>
+      <w>24</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>272</x>
+      <y>440</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>512</x>
+      <y>32</y>
+      <w>80</w>
+      <h>432</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;520.0;30.0;520.0;30.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>248</y>
+      <w>24</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>408</x>
+      <y>544</y>
+      <w>24</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>168</y>
+      <w>352</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>70.0;560.0;10.0;560.0;10.0;10.0;420.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>208</x>
+      <y>552</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>312</x>
+      <y>680</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>0..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>312</x>
+      <y>176</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>0..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>416</x>
+      <y>624</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>0..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>416</x>
+      <y>552</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>520</x>
+      <y>424</y>
+      <w>24</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>560</x>
+      <y>24</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>280</x>
+      <y>424</y>
+      <w>16</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>320</x>
+      <y>424</y>
+      <w>16</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>416</x>
+      <y>256</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>0..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>416</x>
+      <y>296</y>
+      <w>16</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>568</x>
+      <y>320</y>
+      <w>184</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>Enemy
+--
+id:                    int                M PI
+type:	                string           M
+statistics:          E-Stats       M F
+weapon-l:        Weapon      M F
+weapon-r:        Weapon      M F
+eqpmt-head:    Equipment  M F
+eqpmt-body:    Equipment  M F
+eqpmt-cape:    Equipment  M F
+eqpmt-pants:   Equipment  M F
+eqpmt-l-arm:   Equipment  M F
+eqpmt-r-arm:   Equipment  M F
+eqpmt-l-leg:     Equipment  M F
+eqpmt-r-leg:    Equipment  M F
+eqpmt-l-hand:  Equipment  M F
+eqpmt-r-hand:  Equipment  M F
+eqpmt-l-foot:    Equipment  M F
+eqpmt-r-foot:    Equipment  M F
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>248</y>
+      <w>120</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;130.0;50.0;130.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>496</x>
+      <y>560</y>
+      <w>120</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>130.0;10.0;130.0;180.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>584</x>
+      <y>568</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>504</x>
+      <y>680</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>0..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>576</x>
+      <y>296</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>480</x>
+      <y>256</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>0..*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>680</y>
+      <w>168</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>E-Stats
+--
+enemy:                   int     M PI F
+time-units:              int     M
+stamina:                 int     M
+health:                    int     M
+max-health:            int     M
+bravery:                  int     M
+reactions:                int    M
+firing-accuracy:       int    M
+throwing-accuracy: int    M
+melee-accuracy:     int    M
+strength:                 int     M
+psi-strength:           int     M
+psi-skill:                  int     M
+energy-recharge:    int    M
+victory-points:         int    M
+aggression:            int     M
+intelligence:            int     M
+standing-height:      int    M
+kneeling-height:      int    M</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>560</y>
+      <w>24</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>728</x>
+      <y>568</y>
+      <w>24</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>728</x>
+      <y>664</y>
+      <w>24</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>208</x>
+      <y>464</y>
+      <w>48</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>32</x>
+      <y>592</y>
+      <w>40</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>136</x>
+      <y>664</y>
+      <w>40</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1376709580707058934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285360467950268446}
+  - component: {fileID: 6854935038866205807}
+  - component: {fileID: 7505419845265397518}
+  - component: {fileID: 2611128623525055386}
+  - component: {fileID: 4091536474959372494}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285360467950268446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376709580707058934}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6854935038866205807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376709580707058934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77339b6ea40d9ec4ba797400e1d1c5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CellBase: {fileID: 2100000, guid: 866bf02bfd704814a8bdcca4a74f435c, type: 2}
+  CellLit: {fileID: 2100000, guid: 108f72e9fdea61945abee57631180be3, type: 2}
+  CellClick: {fileID: 2100000, guid: 4a65feb89c76e3846a62241e03b6e570, type: 2}
+  CellInRange: {fileID: 2100000, guid: ae8332a2f360aa244ad763e7c05dc5c3, type: 2}
+--- !u!114 &7505419845265397518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376709580707058934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e782801118b9db341938e034e54a06f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 4074611266760312693, guid: fc75b238639a8cc40983a7201de49763, type: 3}
+--- !u!114 &2611128623525055386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376709580707058934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a145b5c8f236d3f4f9a4071ff27f39fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Players: []
+  Enemies: []
+  CurrentRange: 0
+  CurrentSceneIndex: 0
+  CurrentState: 0
+--- !u!114 &4091536474959372494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376709580707058934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59520a497036d3499df21290dcd71cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BreakableWallsParent: {fileID: 0}
+  ActorsParent: {fileID: 0}
+  WallModelParent: {fileID: 0}
+  CellModelParent: {fileID: 0}
+  CellPrefab: {fileID: 8698605759613563070, guid: 02ac57fb562506a4bafd37636240a86e, type: 3}
+  EmptyGameObjectPrefab: {fileID: 6138970664693872260, guid: fe7b7850a9878cc4c92f640952da7699, type: 3}
