@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework;
 using UnityEngine;
 
 public class MBot
@@ -190,8 +191,15 @@ public class MBot
         // Find the closest enemy
         MActor closestEnemy = FindClosestActor(MGameLoop.Instance.Players);
 
+        /* if (closestEnemy != null && HasClearSight(MGameLoop.Instance.CurrentActor.actor.Position, closestEnemy.Position) &&
+            Vector2Int.Distance(MGameLoop.Instance.CurrentActor.actor.Position, closestEnemy.Position) >= 30f)
+        {
+            EndTurn();
+            return;
+        } */
+
         // If an enemy is present, move toward it with randomness 50%
-        if (closestEnemy != null && UnityEngine.Random.Range(0, 3) != 0)
+        if (closestEnemy != null && UnityEngine.Random.Range(0, 3) != 0 && HasClearSight(MGameLoop.Instance.CurrentActor.actor.Position, closestEnemy.Position))
         {
             MoveTowardsEnemy(closestEnemy);
             return;
@@ -250,8 +258,15 @@ public class MBot
         // Perform a raycast to check for obstacles between the bot and the target
         if (Physics.Raycast(from, direction, out RaycastHit hit, direction.magnitude))
         {
-            // Check if the hit object is not the target (e.g., a wall is in the way)
-            return false;
+            // Check if the hit object is the target
+            Vector3 hitPosition = new Vector3(Mathf.RoundToInt(hit.point.x), 0, Mathf.RoundToInt(hit.point.z));
+            Vector3 targetPosition = new Vector3(to2D.x, 0, to2D.y);
+
+            if (hitPosition != targetPosition)
+            {
+                // If the hit object is not the target, the line of sight is blocked
+                return false;
+            }
         }
 
         // If no obstacles were hit, there is a clear line of sight
@@ -472,7 +487,7 @@ public class MBot
         foreach (var actor in actors)
         {
             float distance = Vector2Int.Distance(botPosition, actor.Position);
-            if (distance < shortestDistance && distance <= 20)
+            if (distance < shortestDistance)
             {
                 shortestDistance = distance;
                 closestActor = actor;

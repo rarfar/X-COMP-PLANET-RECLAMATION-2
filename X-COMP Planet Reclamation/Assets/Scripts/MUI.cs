@@ -15,12 +15,10 @@ public class MUI : MonoBehaviour
         AudioManager.instance.PlaySFX(s);
     }
 
-    /*
     public void MainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }
-    */
 
     // For restarting levels after game over
     public void RetryScene()
