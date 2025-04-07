@@ -15,11 +15,7 @@ MonoBehaviour:
   unitLevel: 1
   totalEXP: 0
   experienceGiven: 0
-<<<<<<< Updated upstream
   baseHealth: 3
-=======
-  baseHealth: 4
->>>>>>> Stashed changes
   baseStamina: 5
   baseHealthRecovery: 0
   baseAccuracy: 50

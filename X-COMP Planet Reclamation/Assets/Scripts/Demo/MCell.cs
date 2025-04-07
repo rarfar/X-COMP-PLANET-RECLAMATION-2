@@ -30,7 +30,6 @@ public class MCell : MonoBehaviour
     {
         over = true;
         GetComponent<MeshRenderer>().material = MColours.Instance.CellClick;
-        Debug.Log("MOUSE Hovered");
 
     }
     
@@ -44,7 +43,6 @@ public class MCell : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        Debug.Log("MOUSE CLICKED");
         if (over && IsLit && !HasPlayer && (MGameLoop.Instance.CurrentState == MGameLoop.GameState.Move))
         {
             if (MGameLoop.Instance.CurrentState == MGameLoop.GameState.Move)
@@ -55,7 +53,6 @@ public class MCell : MonoBehaviour
             {
                 GetComponent<MeshRenderer>().material = MColours.Instance.CellInRange;
             }
-            
             MGameLoop.Instance.StartAction(new MMove(new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.z))));
         }
     }

@@ -45,6 +45,7 @@ public class MGameLoop : MonoBehaviour
 
     }
 
+    public string NextLevel;
 
     private void Start()
     {
@@ -87,7 +88,7 @@ public class MGameLoop : MonoBehaviour
                 Debug.Log("YOU WIN");
 
                 int x = 0;
-                foreach (MActor p in Players)
+                foreach(MActor p in Players)
                 {
                     //SaveObject<MActor>(p, "player" + x);
                     SaveObject<CStats>(p.statsManager.SaveObject(), "stats" + x);
@@ -96,12 +97,7 @@ public class MGameLoop : MonoBehaviour
 
 
                 SaveObject<Integer>(new Integer(x), "num");
-<<<<<<< Updated upstream
                 SceneManager.LoadScene("V2_Level_1", LoadSceneMode.Single);
-=======
-
-                SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
->>>>>>> Stashed changes
             }
             GameOver = true;
             return;
