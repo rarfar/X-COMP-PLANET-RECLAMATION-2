@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class MBot
 {
+    // testing push and pull for unity load errors
     // Constructor for MBot, called on the first turn
     public MBot()
     {
-        // Initialization logic can go here if needed
+        
     }
 
     // Method to decide the bot's action during its turn 
