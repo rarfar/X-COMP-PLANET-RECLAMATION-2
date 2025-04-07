@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 10
   itemName: Pistol
-  category: 1
-  icon: {fileID: 0}
+  category: 0
+  icon: {fileID: 21300000, guid: 27ce73d0d92f1a740abedd2ed0258212, type: 3}
   prefab: {fileID: 8241887340457890323, guid: 8224e7d706557c54991816887105a702, type: 3}
   dropChance: 0.697
   weaponCategory: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     range: 0
     ammo: 12
     fireRate: 0
-    durability: 0
+    durability: 100
     armorValue: 0
     healthRestored: 0
     staminaRestored: 0

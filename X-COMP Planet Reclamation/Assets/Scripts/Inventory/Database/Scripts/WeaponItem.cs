@@ -46,7 +46,7 @@ namespace Items
                 stats.accuracy = 0;
                 stats.range = 0;
                 stats.ammo = 0;
-                stats.durability = 100;
+                stats.weaponDurability = 100;
             }
             switch (weaponCategory)
             {

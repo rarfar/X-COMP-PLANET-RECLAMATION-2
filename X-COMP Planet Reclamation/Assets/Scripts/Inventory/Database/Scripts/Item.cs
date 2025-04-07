@@ -13,6 +13,9 @@ namespace Items
         public ItemCategory category;
         public Sprite icon;
         public GameObject prefab;
+        public GameObject slotUI;
+        public GameObject infoUI;
+        [TextArea] public string description;
         [Range(0f, 1f)] public float dropChance = 0.3f;
 
         [Header("Category-Specific")]

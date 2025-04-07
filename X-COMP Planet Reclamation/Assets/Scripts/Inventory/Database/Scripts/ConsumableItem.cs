@@ -10,11 +10,11 @@ namespace Items
 
         public void Use(MStatsManager statsManager)
         {
-            if (isConsumable && (baseStats.durability > 0 || baseStats.maxUses > 0))
+            if (isConsumable && (baseStats.duration > 0 || baseStats.maxUses > 0))
             {
                 if (cooldownTimer <= 0f)
                 {
-                    baseStats.durability--;
+                    baseStats.duration--;
                     baseStats.maxUses--;
                     cooldownTimer = baseStats.cooldown;
 

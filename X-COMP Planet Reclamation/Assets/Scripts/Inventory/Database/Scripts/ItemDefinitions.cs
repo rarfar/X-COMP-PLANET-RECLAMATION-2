@@ -17,10 +17,10 @@ namespace Items
         public float range;          // Effective range in tiles
         public int ammo;             // Magazine size
         public float fireRate;       // Shots per turn
-        public float durability;     // Durability
+        public float weaponDurability;     // Weapon durability
 
         [Header("Armor-Specific")]
-        public float armorValue;     // Damage reduction
+        public float armorValue;     // Damage taken
 
         [Header("Consumable-Specific")]
         public int healthRestored;   // Healing amount
@@ -36,7 +36,8 @@ namespace Items
     {
         Armor,
         Weapon,
-        Consumable
+        Consumable,
+        Backpack
         //HWP // must be treated as unit not an item
     }
 
@@ -54,6 +55,7 @@ namespace Items
         // Standard Weapons
         Pistol,
         Rifle,
+        Sniper,
         HeavyCannon,
         AutoCannon,
         RocketLauncher,
@@ -66,11 +68,13 @@ namespace Items
         LaserPistol,
         LaserRifle,
         HeavyLaser,
+        LaserSniper,
 
         // Alien Weapons
         PlasmaPistol,
         PlasmaRifle,
         HeavyPlasma,
+        PlasmaSniper,
         AlienGrenade, //from here, need to make on Unity
         SmallLauncher,
         BlasterLauncher,

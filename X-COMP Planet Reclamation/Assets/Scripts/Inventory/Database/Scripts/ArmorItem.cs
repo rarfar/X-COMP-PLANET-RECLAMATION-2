@@ -6,7 +6,8 @@ namespace Items
     {
         [SerializeField] private bool isArmor = true;
         
-
+        // should make 3 levels of armor for each part:
+        // head, body (suit), gloves? shoes, belt, eye?
         public override Stats GetCurrentStats()
         {
             Stats stats = baseStats;
@@ -23,6 +24,7 @@ namespace Items
                         break;
                     case ArmorType.PowerSuit:
                         stats.armorValue += 15.0f;
+                        
                         break;
                     case ArmorType.PersonalArmor:
                         stats.armorValue += 5.0f;

@@ -32,11 +32,12 @@ MonoBehaviour:
     range: 0
     ammo: 150
     fireRate: 0
+    durability: 100
     armorValue: 0
     healthRestored: 0
     staminaRestored: 0
     maxUses: 0
-    durability: 0
+    duration: 0
     cooldown: 0
     healthIncrease: 0
   isUnique: 0
