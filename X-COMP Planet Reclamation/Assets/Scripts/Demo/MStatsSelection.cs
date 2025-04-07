@@ -5,6 +5,7 @@ using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Int : MonoBehaviour
@@ -41,6 +42,8 @@ public class MStatsSelection : MonoBehaviour
     [SerializeField] Button[] barsLess;
 
     [SerializeField] Button finish;
+
+    public string NextLevel;
 
     public class StatManager
     {
@@ -174,7 +177,7 @@ public class MStatsSelection : MonoBehaviour
 
     public void finishSelection()
     {
-
+        //SceneManager.LoadScene(MGameLoop.Instance.NextLevel);
     }
 
     public void loadPlayer(int num)

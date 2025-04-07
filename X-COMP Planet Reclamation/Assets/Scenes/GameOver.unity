@@ -325,8 +325,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1624539118}
         m_TargetAssemblyTypeName: MUI, Assembly-CSharp
-        m_MethodName: SwitchScene
-        m_Mode: 5
+        m_MethodName: RetryScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

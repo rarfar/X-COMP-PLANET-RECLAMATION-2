@@ -2496,7 +2496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f9cb4c8536f184597442ff48ad74a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Human 2
+  text: Enemy 1
 --- !u!4 &445942319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6677204116227164552, guid: ddc99359067b1b54d859ed8102cd291d, type: 3}
@@ -11892,7 +11892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f9cb4c8536f184597442ff48ad74a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: Human 2
+  text: Enemy 2
 --- !u!114 &2022452066
 MonoBehaviour:
   m_ObjectHideFlags: 0
