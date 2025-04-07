@@ -97,8 +97,7 @@ public class MGameLoop : MonoBehaviour
 
 
                 SaveObject<Integer>(new Integer(x), "num");
-
-                SceneManager.LoadScene(NextLevel, LoadSceneMode.Single);
+                SceneManager.LoadScene("V2_Level_1", LoadSceneMode.Single);
             }
             GameOver = true;
             return;

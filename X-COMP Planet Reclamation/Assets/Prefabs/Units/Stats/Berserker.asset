@@ -15,7 +15,7 @@ MonoBehaviour:
   unitLevel: 1
   totalEXP: 0
   experienceGiven: 0
-  baseHealth: 6
+  baseHealth: 1
   baseStamina: 5
   baseHealthRecovery: 0
   baseAccuracy: 50
