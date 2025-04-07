@@ -102,9 +102,6 @@ public class MGameLoop : MonoBehaviour
 
                 SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
