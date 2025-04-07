@@ -97,7 +97,7 @@ public class MGameLoop : MonoBehaviour
 
 
                 SaveObject<Integer>(new Integer(x), "num");
-                SceneManager.LoadScene("V2_Level_1", LoadSceneMode.Single);
+                SceneManager.LoadScene("Stats Selection", LoadSceneMode.Single);
             }
             GameOver = true;
             return;

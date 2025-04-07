@@ -8,6 +8,8 @@ public class CutsceneManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+
+        SceneManager.LoadScene("V2_Level_0", LoadSceneMode.Single);
+
     }
 }
