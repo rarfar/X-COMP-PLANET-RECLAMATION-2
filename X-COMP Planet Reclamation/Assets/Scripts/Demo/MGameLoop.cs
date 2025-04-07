@@ -45,6 +45,8 @@ public class MGameLoop : MonoBehaviour
 
     }
 
+    public string NextLevel;
+
     private void Start()
     {
         (Grid, Walls, BreakableWalls, BreakableWallsReverse, Players, Enemies) = GetComponent<MGenerateGrid>().GenerateGrid();
@@ -96,7 +98,7 @@ public class MGameLoop : MonoBehaviour
 
                 SaveObject<Integer>(new Integer(x), "num");
 
-                SceneManager.LoadScene("V2_Level_1", LoadSceneMode.Single);
+                SceneManager.LoadScene(NextLevel, LoadSceneMode.Single);
             }
             GameOver = true;
             return;

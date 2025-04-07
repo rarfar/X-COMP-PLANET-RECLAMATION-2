@@ -98461,6 +98461,10 @@ PrefabInstance:
       value: Managers
       objectReference: {fileID: 0}
     - target: {fileID: 2611128623525055386, guid: 7120e388d750a1742841d0c083c80051, type: 3}
+      propertyPath: NextLevel
+      value: V2_Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611128623525055386, guid: 7120e388d750a1742841d0c083c80051, type: 3}
       propertyPath: CurrentState
       value: 1
       objectReference: {fileID: 0}
