@@ -121,6 +121,8 @@ public class MBot
         int maxHealth = MGameLoop.Instance.CurrentActor.actor.GetStats().maxHealth;
         int actionPoints = MGameLoop.Instance.CurrentActor.actor.GetStats().GetActionUnits();
 
+        Debug.Log($"Current range: {MGameLoop.Instance.CurrentRange}");
+
         // Check if any enemies are in range
         Dictionary<Vector2Int, (MCell, List<Vector2Int>)> targetTiles = MGameLoop.ValidMoves(
             MGameLoop.Instance.CurrentActor.actor.Position,
@@ -135,11 +137,18 @@ public class MBot
         {
             if (targetTiles.ContainsKey(enemy.Position))
             {
+                float distance = Vector2Int.Distance(MGameLoop.Instance.CurrentActor.actor.Position, enemy.Position);
                 // Check for clear sight using a raycast
                 if (HasClearSight(MGameLoop.Instance.CurrentActor.actor.Position, enemy.Position))
                 {
-                    enemiesInRange.Add(enemy);
+                    // Check if the enemy is within the bot's weapon range
+                    if (distance <= MGameLoop.Instance.CurrentRange)
+                    {
+                        // Add the enemy to the list if it's within range and has clear sight
+                        enemiesInRange.Add(enemy);
+                    }
                 }
+                
             }
         }
 
@@ -182,8 +191,8 @@ public class MBot
         // Find the closest enemy
         MActor closestEnemy = FindClosestActor(MGameLoop.Instance.Players);
 
-        // If an enemy is present, move toward it
-        if (closestEnemy != null)
+        // If an enemy is present, move toward it with randomness 50%
+        if (closestEnemy != null && UnityEngine.Random.Range(0, 3) != 0)
         {
             MoveTowardsEnemy(closestEnemy);
             return;
@@ -208,7 +217,7 @@ public class MBot
         int index = MGameLoop.Instance.CurrentActor.index;
 
         // If this is the last enemy in the list, reset all enemies' action points and switch to players
-        if (index == MGameLoop.Instance.Enemies.Count - 1)
+        if (index >= MGameLoop.Instance.Enemies.Count - 1)
         {
             foreach (var p in MGameLoop.Instance.Enemies)
             {
@@ -275,9 +284,46 @@ public class MBot
 
         // If no out-of-sight tiles are available, attempt to shoot again
         MActor closestEnemy = FindClosestActor(MGameLoop.Instance.Players);
+        MActor closestFriendly = FindClosestActor(MGameLoop.Instance.Enemies);
         if (closestEnemy != null)
         {
-            MGameLoop.Instance.StartAction(new MShoot(closestEnemy.transform));
+            float distance = Vector2Int.Distance(MGameLoop.Instance.CurrentActor.actor.Position, closestEnemy.Position);
+            // Check for clear sight using a raycast
+            if (HasClearSight(MGameLoop.Instance.CurrentActor.actor.Position, closestEnemy.Position))
+            {
+                // Check if the enemy is within the bot's weapon range
+                if (distance <= MGameLoop.Instance.CurrentRange)
+                {
+                    // Shoot at the enemy
+                    MGameLoop.Instance.StartAction(new MShoot(closestEnemy.transform));
+                }
+                else if (closestFriendly != null)
+                {
+                    MoveTowardsGroup(new List<MActor> { closestFriendly });
+                    return;
+                }
+                else
+                {
+                    MoveRandomly();
+                    return;
+                }
+            }
+            else if (closestFriendly != null)
+            {
+                MoveTowardsGroup(new List<MActor> { closestFriendly });
+                return;
+            }
+            else
+            {
+                MoveRandomly();
+                return;
+            }
+            
+        }
+        else if (closestFriendly != null)
+        {
+            MoveTowardsGroup(new List<MActor> { closestFriendly });
+            return;
         }
         else
         {
@@ -291,7 +337,7 @@ public class MBot
         // If no friendlies are present, move randomly
         if (group.Count == 0)
         {
-            MoveRandomly();
+            //MoveRandomly();
             return;
         }
 
@@ -394,6 +440,11 @@ public class MBot
     {
         // Move to a random valid tile
         var tiles = MGameLoop.Instance.PotentialMoves.ToList();
+        if (tiles.Count == 0)
+        {
+            EndTurn();
+            return;
+        }
         var move = tiles[UnityEngine.Random.Range(0, tiles.Count)].Key;
         MGameLoop.Instance.StartAction(new MMove(move));
     }
@@ -407,7 +458,7 @@ public class MBot
         foreach (var actor in actors)
         {
             float distance = Vector2Int.Distance(botPosition, actor.Position);
-            if (distance < shortestDistance)
+            if (distance < shortestDistance && distance <= 20)
             {
                 shortestDistance = distance;
                 closestActor = actor;
