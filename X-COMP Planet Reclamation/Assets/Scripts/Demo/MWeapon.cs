@@ -5,7 +5,7 @@ public class MWeapon
     public int Damage;
     public int Range;
 
-    public static MWeapon Default = new MWeapon(1, 5);
+    public static MWeapon Default = new MWeapon(1, 3);
 
     public MWeapon(int damage, int range)
     {
