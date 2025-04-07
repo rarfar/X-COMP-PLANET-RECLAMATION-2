@@ -101,9 +101,6 @@ public class MGameLoop : MonoBehaviour
 =======
 
                 SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
             }
             GameOver = true;

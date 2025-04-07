@@ -16,11 +16,7 @@ MonoBehaviour:
   totalEXP: 0
   experienceGiven: 0
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
   baseHealth: 5
-=======
-  baseHealth: 7
->>>>>>> Stashed changes
 =======
   baseHealth: 7
 >>>>>>> Stashed changes
