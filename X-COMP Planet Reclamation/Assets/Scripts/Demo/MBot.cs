@@ -121,14 +121,12 @@ public class MBot
         int maxHealth = MGameLoop.Instance.CurrentActor.actor.GetStats().maxHealth;
         int actionPoints = MGameLoop.Instance.CurrentActor.actor.GetStats().GetActionUnits();
 
-        Debug.Log($"Current range: {MGameLoop.Instance.CurrentRange}");
-
         // Check if any enemies are in range
         Dictionary<Vector2Int, (MCell, List<Vector2Int>)> targetTiles = MGameLoop.ValidMoves(
             MGameLoop.Instance.CurrentActor.actor.Position,
             MGameLoop.Instance.CurrentRange,
             MGameLoop.Instance.Grid,
-            null,
+            MGameLoop.Instance.Walls,
             false
         );
 
@@ -141,6 +139,7 @@ public class MBot
                 // Check for clear sight using a raycast
                 if (HasClearSight(MGameLoop.Instance.CurrentActor.actor.Position, enemy.Position))
                 {
+                    Debug.Log("AI has clear sight");
                     // Check if the enemy is within the bot's weapon range
                     if (distance <= MGameLoop.Instance.CurrentRange)
                     {
@@ -237,11 +236,26 @@ public class MBot
         }
     }
 
-    private bool HasClearSight(Vector2Int from, Vector2Int to)
+    private bool HasClearSight(Vector2Int from2D, Vector2Int to2D)
     {
+        // Convert 2D positions to 3D
+        Vector3 from = ConvertTo3D(from2D, 0.6f); // Set y to 1f for the bot's height
+        Vector3 to = ConvertTo3D(to2D, 0.6f);     // Set y to 1f for the target's height
+
+        // Calculate the direction from the source to the target
+        Vector3 direction = to - from;
+
+        Debug.DrawLine(from, to, Color.red, 5f); // Draw a line for debugging
+
         // Perform a raycast to check for obstacles between the bot and the target
-        RaycastHit2D hit = Physics2D.Linecast(from, to);
-        return hit.collider == null;
+        if (Physics.Raycast(from, direction, out RaycastHit hit, direction.magnitude))
+        {
+            // Check if the hit object is not the target (e.g., a wall is in the way)
+            return false;
+        }
+
+        // If no obstacles were hit, there is a clear line of sight
+        return true;
     }
 
     private void MoveToCover()
@@ -467,5 +481,12 @@ public class MBot
 
         return closestActor;
     }
+
+    private Vector3 ConvertTo3D(Vector2Int position2D, float y = 0f)
+    {
+        return new Vector3(position2D.x, y, position2D.y);
+    }
     
 }
+
+
