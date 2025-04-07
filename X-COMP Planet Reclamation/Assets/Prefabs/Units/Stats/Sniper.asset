@@ -20,5 +20,5 @@ MonoBehaviour:
   baseHealthRecovery: 0
   baseAccuracy: 70
   baseActionUnits: 1
-  baseDamage: 1
+  baseDamage: 2
   baseArmor: 0
