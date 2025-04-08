@@ -73,7 +73,6 @@ public class MGameLoop : MonoBehaviour
             }
             MGameLoop.Instance.UnlightTiles();
             MGameLoop.Instance.UnlightTargets();
-            Time.timeScale = 0;
             if (MGameLoop.Instance.Players.Count == 0)
             {
                 // LOSE CONDITION CODE
