@@ -65,6 +65,24 @@ public class MGameLoop : MonoBehaviour
 
     public void Update()
     {
+        // zoom with arrows or wheel
+        var WHEEL_SENSITIVITY = 1.4f;
+        var ARROW_SENSITIVITY = 0.03f;
+        var MIN_SIZE = 1f;
+        var MAX_SIZE = 10f;
+        var cameraSize = Camera.main.orthographicSize;
+        cameraSize -= Input.GetAxis("Mouse ScrollWheel") * WHEEL_SENSITIVITY;
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            cameraSize -= ARROW_SENSITIVITY;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            cameraSize += ARROW_SENSITIVITY;
+        }
+        cameraSize = Mathf.Clamp(cameraSize, MIN_SIZE, MAX_SIZE);
+        Camera.main.orthographicSize = cameraSize;
+
         if (MGameLoop.Instance.Enemies.Count == 0 || MGameLoop.Instance.Players.Count == 0)  // Game over, run once
         {
             if (GameOver)
