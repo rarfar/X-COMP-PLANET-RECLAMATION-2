@@ -51,6 +51,9 @@ public class MShoot : MAction
         bullet.transform.position = Vector3.MoveTowards(shooter.transform.position, Target.position, OFFSET); // offset the bullet in front of the player and towards the intended target
         Velocity = (Destination - bullet.transform.position).normalized * SPEED;
         Bullet = bullet.transform;
+
+        // bullet angle
+        Bullet.rotation = Quaternion.LookRotation(Velocity, Vector3.up);
     }
 
     public void Progress()
