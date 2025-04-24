@@ -43,6 +43,8 @@ public class MStatsSelection : MonoBehaviour
 
     [SerializeField] Button finish;
 
+    private int[] levelUpTable = new int[] {75, 200, 450, 1000};
+
     public class StatManager
     {
         int currentLevel;
@@ -90,7 +92,6 @@ public class MStatsSelection : MonoBehaviour
             valueArray = new int[num, 5];
 
             Debug.Log("num" + i);
-            //Players.Add(loadActor("player" + i));
             Stats.Add(loadStatsManager("stats" + i));
 
             for(int j  = 0; j < 5; j++)
@@ -124,8 +125,6 @@ public class MStatsSelection : MonoBehaviour
             Debug.Log(a.currentLevel);
         }
 
-        //Transform[] barsInstances = new Transform[5]
-
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -145,11 +144,6 @@ public class MStatsSelection : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void doNothing(int i)
-    {
-
     }
 
     public void nextClick()
@@ -175,55 +169,38 @@ public class MStatsSelection : MonoBehaviour
 
     public void finishSelection()
     {
+        for (int i = 0; i < num-1; i++)
+        {
+            valueArray = new int[num, 5];
+
+            Debug.Log("num" + i);
+            Stats.Add(loadStatsManager("stats" + i));
+
+            for (int j = 0; j < 5; j++)
+            {
+                switch (j)
+                {
+                    case 0:
+                        Stats[i].maxActionUnits = valueArray[i, j];
+                        break;
+                    case 1:
+                        Stats[i].maxHealth = valueArray[i, j];
+                        break;
+                    case 2:
+                        Stats[i].maxStamina = valueArray[i, j];
+                        break;
+                    case 3:
+                        Stats[i].baseAccuracy = valueArray[i, j];
+                        break;
+                    case 4:
+                        Stats[i].maxHealth = valueArray[i, j];
+                        break;
+                }
+            }
+            saveStatsManager("stats" + num, Stats[i]);
+        }
+
         SceneManager.LoadScene(MGameLoop.Instance.NextLevel, LoadSceneMode.Single);
-    }
-
-    public void loadPlayer(int num)
-    {
-        CStats stats = Stats[num];
-        player.text = stats.playerName;
-        exp.text = "EXP: " + stats.totalEXP;
-
-        //TMP_Text actionUnitsText = bar1.Find("TITLE").gameObject.GetComponent<TMP_Text>();
-        //TMP_Text actionUnitsValue = bar1value.gameObject.GetComponent<TMP_Text>();
-
-        //TMP_Text healthText = bar2.Find("TITLE").gameObject.GetComponent<TMP_Text>();
-        //TMP_Text healthValue = bar2.Find("VALUE").gameObject.GetComponent<TMP_Text>();
-
-        //TMP_Text staminaText = bar3.Find("TITLE").gameObject.GetComponent<TMP_Text>();
-        //TMP_Text staminaValue = bar3.Find("VALUE").gameObject.GetComponent<TMP_Text>();
-
-        //TMP_Text accuracyText = bar4.Find("TITLE").gameObject.GetComponent<TMP_Text>();
-        //TMP_Text accuracyValue = bar4.Find("VALUE").gameObject.GetComponent<TMP_Text>();
-
-        //TMP_Text healthRecoverySpeedText = bar5.Find("TITLE").gameObject.GetComponent<TMP_Text>();
-        //TMP_Text healthRecoverySpeedValue = bar5.Find("VALUE").gameObject.GetComponent<TMP_Text>();
-
-        //actionUnitsText.text = "Action Units";
-        barsValue[0].text = stats.currentActionsUnits.ToString();
-
-        //healthText.text = "Health";
-        barsValue[1].text = stats.currentActionsUnits.ToString();
-
-        //staminaText.text = "Stamina";
-        barsValue[2].text = stats.currentActionsUnits.ToString();
-
-        //accuracyText.text = "Accuracy";
-        barsValue[3].text = stats.currentActionsUnits.ToString();
-
-        //healthRecoverySpeedText.text = "Health Recovery Speed";
-        barsValue[4].text = stats.currentActionsUnits.ToString();
-
-
-        //(Button)bar1.Find("MORE").GameObject()
-            //.onClick.
-            //onClick.AddListener();
-            //next.onClick.AddListener(nextClick);
-    }
-
-    public void nothing()
-    {
-
     }
 
     public void valueClickMore(int stat)
@@ -239,25 +216,35 @@ public class MStatsSelection : MonoBehaviour
         barsValue[stat].text = valueArray[pointer, stat].ToString();
     }
 
-    public MActor loadActor(string file)
+    public void loadPlayer(int num)
     {
-        string fileName = Application.persistentDataPath + "/" + file + ".json";
+        CStats stats = Stats[num];
+        player.text = stats.playerName;
+        exp.text = "EXP: " + stats.totalEXP;
+        int lvl = stats.currentLevel;
+        int totalexp = stats.totalEXP;
 
-        Debug.Log("LOAD" + fileName);
-
-        string s = "";
-        string line = "";
-        using (StreamReader sr = File.OpenText(fileName))
+        int tablePointer = 0;
+        while (levelUpTable[tablePointer] < totalexp)
         {
-            while ((line = sr.ReadLine()) != null)
-            {
-                Debug.Log(line);
-                s += line;
-            }
+            tablePointer++;
         }
 
-        MActor data = JsonUtility.FromJson<MActor>(s);
-        return data;
+        Debug.Log(levelUpTable[tablePointer] + " " + tablePointer);
+
+        lvlup.text = lvl + " -> " + (tablePointer).ToString().Substring(0);
+
+        Stats[num].currentLevel = tablePointer;
+
+        barsValue[0].text = valueArray[num, 0].ToString();//stats.currentActionsUnits.ToString();
+
+        barsValue[1].text = valueArray[num, 1].ToString();//stats.currentActionsUnits.ToString();
+
+        barsValue[2].text = valueArray[num, 2].ToString();//stats.currentActionsUnits.ToString();
+
+        barsValue[3].text = valueArray[num, 3].ToString();//stats.currentActionsUnits.ToString();
+
+        barsValue[4].text = valueArray[num, 4].ToString();//stats.currentActionsUnits.ToString();
     }
 
     public CStats loadStatsManager(string file)
@@ -306,5 +293,24 @@ public class MStatsSelection : MonoBehaviour
 
         string[] parts = s.Split(":");
         return int.Parse(parts[1]);
+    }
+
+    public void saveInt(string filename, int integer)
+    {
+        string data = JsonUtility.ToJson(integer, true);
+        string file = Application.persistentDataPath + "/" + filename + ".json";
+
+        if (!File.Exists(file)) File.CreateText(file).Dispose();
+        File.WriteAllText(file, data);
+    }
+
+    public void saveStatsManager(string file, CStats stats)
+    {
+        string data = JsonUtility.ToJson(stats, true);
+        string path = Application.persistentDataPath + "/" + file + ".json";
+
+        if (!File.Exists(path)) File.CreateText(path);
+        File.WriteAllText(path, data);
+        Debug.Log(data);
     }
 }
