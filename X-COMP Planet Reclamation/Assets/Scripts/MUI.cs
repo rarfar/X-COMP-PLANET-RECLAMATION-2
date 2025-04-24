@@ -31,7 +31,10 @@ public class MUI : MonoBehaviour
 
     public void Quit()
     {
-        // NOT SUITED FOR PRODUCTION
+#if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
     }
 }
