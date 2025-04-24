@@ -931,11 +931,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: f1a8dd36-9fa5-4efb-ad53-84ca96e5883f
+  cloudProjectId: c87f383e-e2b4-4a97-a2fd-ba45c23ae774
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: X-COMP Planet Reclamation
-  organizationId: shutterstacks
+  projectName: My project
+  organizationId: rarfar
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
