@@ -104,3 +104,14 @@ body {
 .feedback-icon:hover {
   transform: scale(1.2);
 }
+.feedback-link {
+  color: #85d1f0;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.feedback-link:hover {
+  color: #4eb3e3;
+  text-decoration: underline;
+}
