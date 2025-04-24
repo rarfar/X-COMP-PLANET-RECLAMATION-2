@@ -50,13 +50,8 @@ public class MGameLoop : MonoBehaviour
     private void Start()
     {
         (Grid, Walls, BreakableWalls, BreakableWallsReverse, Players, Enemies) = GetComponent<MGenerateGrid>().GenerateGrid();
-
-        for (int v = 0; v < Players.Count; v++)
-        {
-            Players[v].SetStatsManager(v, true);
-            if (Players[v].statsManager.currentHealth > 0) Players.RemoveAt(v);
-        }
-        foreach (var v in Enemies) { v.SetStatsManager(0, false); }
+        foreach (var v in Players) { v.SetStatsManager(); }
+        foreach (var v in Enemies) { v.SetStatsManager(); }
         ChangePlayer(0);
 
         // camera
@@ -112,11 +107,9 @@ public class MGameLoop : MonoBehaviour
                 int x = 0;
                 foreach(MActor p in Players)
                 {
-                    if(p.statsManager.currentHealth > 0)
-                    {
-                        SaveObject<CStats>(p.statsManager.SaveObject(), "stats" + x);
-                        x++;
-                    }
+                    //SaveObject<MActor>(p, "player" + x);
+                    SaveObject<CStats>(p.statsManager.SaveObject(), "stats" + x);
+                    x++;
                 }
 
 
@@ -175,6 +168,7 @@ public class MGameLoop : MonoBehaviour
         }
     }
 
+
     private void SaveObject<T>(T obj, string filename)
     {
         string data = JsonUtility.ToJson(obj, true);
@@ -186,6 +180,7 @@ public class MGameLoop : MonoBehaviour
         File.WriteAllText(file, data);
 
     }
+
 
     public void ChangePlayer(int index)
     {

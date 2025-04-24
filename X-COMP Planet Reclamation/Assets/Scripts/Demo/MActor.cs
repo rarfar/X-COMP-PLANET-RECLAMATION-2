@@ -8,10 +8,10 @@ public class MActor : MonoBehaviour
 {
     [ReadOnly] public MStatsManager statsManager;
 
-    public void SetStatsManager(int v, Boolean isPlayer)
+    public void SetStatsManager()
     {
         statsManager = GetComponent<MStatsManager>();
-        if (isPlayer) statsManager.loadValues(v);
+
     }
     public enum ActorType
     {

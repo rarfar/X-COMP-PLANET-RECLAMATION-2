@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using Database;
 using Items;
 using UnityEngine;
@@ -8,6 +7,9 @@ using UnityEngine.TestTools;
 [Serializable]
 public class MStatsManager : MonoBehaviour
 {
+
+
+
     // Initilize all stats, even those not used by a particular unit type.
 
     private void Awake()
@@ -48,6 +50,7 @@ public class MStatsManager : MonoBehaviour
     public int currentLevel;
     public int totalEXP;
     public int experienceGiven;
+    
 
     [Header("Health & Stamina")]
     public int maxHealth;
@@ -67,6 +70,8 @@ public class MStatsManager : MonoBehaviour
 
     [ReadOnly] public int maxActionUnits;
     [ReadOnly] public int currentActionsUnits;
+
+
     // Use these functions to get and set / update values.
 
     public string GetPlayerName()
@@ -77,22 +82,27 @@ public class MStatsManager : MonoBehaviour
     {
         return totalEXP;
     }
+
     public void GiveEXP(int amount)
     {
         totalEXP += amount;
     }
+
     public void SetEXP(int amount)
     {
         totalEXP = amount;
     }
+
     public int GetExperienceGiven()
     {
         return experienceGiven;
     }
+
     public int GetCurrentLevel()
     {
         return currentLevel;
     }
+
     public bool LevelUp()
     {
         if (MLeveling.CanLevelUp(currentLevel, totalEXP)) {
@@ -107,6 +117,8 @@ public class MStatsManager : MonoBehaviour
     {
         return currentHealth;
     }
+
+
     /*
      * Returns 1 if alive, 0 if dead
      * Negative values == Decrease health
@@ -130,6 +142,8 @@ public class MStatsManager : MonoBehaviour
             return 1;
         }
     }
+
+
     public void ResetHealth()
     {
         currentHealth = maxHealth;
@@ -147,6 +161,7 @@ public class MStatsManager : MonoBehaviour
     {
         return currentStamina;
     }
+
     public void ModifyStamina(int amount)
     {
         if (currentStamina + amount <= 0)
@@ -162,14 +177,17 @@ public class MStatsManager : MonoBehaviour
             currentStamina += amount;
         }
     }
+
     public void ResetStamina()
     {
         currentStamina = maxStamina;
     }
+
     public void DecreaseStamina()
     {
         currentStamina--;
     }
+
     public void SetStamina(int amount)
     {
         currentStamina = amount;
@@ -194,14 +212,17 @@ public class MStatsManager : MonoBehaviour
             currentArmor += amount;
         }
     }
+
     public int GetAccuracy()
     {
         return currentAccuracy;
     }
+
     public int GetActionUnits()
     {
         return currentActionsUnits;
     }
+
     // Decreases the currentActionUnits by 1;
     public void DecreaseActionUnits()
     {
@@ -210,10 +231,12 @@ public class MStatsManager : MonoBehaviour
             currentActionsUnits--;
         }
     }
+
     public void ResetActionUnits()
     {
         currentActionsUnits = maxActionUnits;
     }
+
     public void ModifyActionUnits(int amount)
     {
         if (currentActionsUnits + amount <= 0)
@@ -286,51 +309,6 @@ public class MStatsManager : MonoBehaviour
     {
         CStats obj = new(playerName, currentLevel, totalEXP, maxHealth, maxStamina, experienceGiven, maxActionUnits, baseAccuracy, currentHealth, currentStamina, currentActionsUnits);
         return obj;
-    }
-
-    public void loadValues(int v)
-    {
-        string fileName = Application.persistentDataPath + "/stats" + v + ".json";
-        Debug.Log("LOAD" + fileName);
-
-        string s = "";
-        string line = "";
-        using (StreamReader sr = File.OpenText(fileName))
-        {
-            while ((line = sr.ReadLine()) != null)
-            {
-                Debug.Log(line);
-                s += line;
-            }
-        }
-        CStats data = JsonUtility.FromJson<CStats>(s);
-
-        //this.playerName = playerName;
-        //this.currentLevel = currentLevel;
-        //this.totalEXP = totalEXP;
-        //this.maxHealth = maxHealth;
-        //this.experienceGiven = experienceGiven;
-        //this.maxActionUnits = maxActionUnits;
-        //this.baseAccuracy = baseAccuracy;
-
-        //this.currentHealth = currentHealth;
-        //this.currentStamina = currentStamina;
-        //this.currentActionsUnits = currentActionsUnits;
-
-        currentLevel = data.currentLevel;
-        totalEXP = data.totalEXP;
-        maxHealth = data.maxHealth;
-        //maxStamina = data.baseStamina;
-        experienceGiven = data  .experienceGiven;
-        //maxActionUnits = data.baseActionUnits;
-        baseAccuracy = data.baseAccuracy;
-
-        currentHealth = data.currentHealth;
-        currentStamina = data.currentStamina;
-        currentActionsUnits = data.currentActionsUnits;
-        currentAccuracy = baseAccuracy;
-        //currentArmor = 0;
-        //maxArmor = 5;
     }
 
 }
