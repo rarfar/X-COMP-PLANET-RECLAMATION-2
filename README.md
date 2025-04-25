@@ -9,7 +9,7 @@ This repository is **exclusively maintained by the development team**. It contai
 ## 🌐 Official Website & Download
 
 This is **not** the repository for the official landing page or public game downloads.  
-For players and fans looking to **download the game**, view **updates**, or explore the **community**, please visit the official website repository (coming soon or linked separately).
+For players and fans looking to **download the game**,  please visit the official website repository https://github.com/rarfar/X-COMP-Planet-Reclamation-OFFICIAL.
 
 ## 🔧 For Developers
 
