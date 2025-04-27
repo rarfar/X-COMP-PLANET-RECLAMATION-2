@@ -375,6 +375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405d8454328dcff4bb77e250ec020925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeTime: 10
+  sceneName: V2_Level_0
 --- !u!4 &1279065677
 Transform:
   m_ObjectHideFlags: 0
@@ -462,8 +464,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -530,8 +532,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3000, y: 700}
+  m_AnchoredPosition: {x: 0.000061035, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1351984253
 Animator:
@@ -590,16 +592,10 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -5108802172104524811, guid: a314186110456e6459532c275efafc4a, type: 2}
-    value: {fileID: 1351984249}
-  - key: {fileID: -1307405952614983373, guid: a314186110456e6459532c275efafc4a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 5507589094501173151, guid: a314186110456e6459532c275efafc4a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -8266498480058489425, guid: a314186110456e6459532c275efafc4a, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: 1070484343864891150, guid: a314186110456e6459532c275efafc4a, type: 2}
-    value: {fileID: 1279065675}
+  - key: {fileID: 4732968297680988650, guid: a314186110456e6459532c275efafc4a, type: 2}
+    value: {fileID: 1979083985}
+  - key: {fileID: 8462698341200060346, guid: a314186110456e6459532c275efafc4a, type: 2}
+    value: {fileID: 1351984253}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1480976256
@@ -888,7 +884,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 800}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1979083985
 Animator:
@@ -961,8 +957,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
