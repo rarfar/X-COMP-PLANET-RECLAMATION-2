@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -56,5 +57,14 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.volume = vol;
 
+    }
+
+    public void GameOverMusic()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "GameOver")
+        {
+            PlayMusic("Level Theme");
+        }
     }
 }

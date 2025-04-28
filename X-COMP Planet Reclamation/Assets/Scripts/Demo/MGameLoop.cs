@@ -97,6 +97,7 @@ public class MGameLoop : MonoBehaviour
                 Debug.Log("YOU LOSE");
                 // Go to Gameover Scene
                 SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+               
 
             }
             else

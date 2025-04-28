@@ -77,7 +77,7 @@ public class MShoot : MAction
         {
             Object.Destroy(Bullet.gameObject);
             if (Collision.GetComponent<MActor>() != null)
-            {
+            { 
                 var target = Collision.GetComponent<MActor>();
                 // reduce armor first then remove armor
                 if (target.GetStats().GetArmor() == 0)
@@ -109,9 +109,12 @@ public class MShoot : MAction
                         Object.Destroy(target.gameObject);
                     }
                 }
+                // Play sound effect
+                AudioManager.instance.PlaySFX("Gun Shot Target");
             }
             else if (Collision.GetComponent<MShootable>() != null) // destructible wall
             {
+                
                 var wall = Collision.GetComponent<MShootable>();
                 var (tile1, tile2) = MGameLoop.Instance.BreakableWallsReverse[wall];
                 MGameLoop.Instance.BreakableWalls.Remove((tile1, tile2));
@@ -120,6 +123,8 @@ public class MShoot : MAction
                 MGameLoop.Instance.Walls.Remove((tile2, tile1));
                 MGameLoop.Instance.BreakableWallsReverse.Remove(wall);
                 Object.Destroy(wall.gameObject);
+                // Play sound effect
+                AudioManager.instance.PlaySFX("Gun Shot Miss");
             }
         }
         CurrentInstance = null;
