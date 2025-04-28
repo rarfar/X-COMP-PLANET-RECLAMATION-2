@@ -54,19 +54,28 @@ public class MGameLoop : MonoBehaviour
         Debug.Log(NextLevel);
         Debug.Log(Players.Count);
 
-        for (int v = 0; v < Players.Count; v++)
+        //if First Level
+        if (MGameLoop.Instance.NextLevel == "V2_Level_1")
         {
-            if (MGameLoop.Instance.NextLevel == "V2_Level_1") {
-                Players[v].SetStatsManager(v, false);
+            for (int v = 0; v < Players.Count; v++)  Players[v].SetStatsManager(v, false);  
+        } 
+        //otherwise for all levels
+        else
+        {
+            int n = loadInt("num");
+            //for old characters
+            for (int v = 0; v < n; v++)
+            {
+                    Debug.Log("Setting Stats Manager");
+                    Players[v].SetStatsManager(v, true);
+
+                if (Players[v].statsManager.currentHealth <= 0) Players.RemoveAt(v);
             }
 
-            else {
-                Debug.Log("Setting Stats Manager");
-                Players[v].SetStatsManager(v, true);
-            }
-
-            if (Players[v].statsManager.currentHealth <= 0) Players.RemoveAt(v);
+            //for new characters
+            for(int v = n; v < Players.Count; v++) Players[v].SetStatsManager(v, false);
         }
+            int num = loadInt("num");
 
         foreach (var v in Enemies) { v.SetStatsManager(0, false); }
 
@@ -353,6 +362,33 @@ public class MGameLoop : MonoBehaviour
         {
             e.Value.Unlight();
         }
+    }
+
+    public int loadInt(string file)
+    {
+        string fileName = Application.persistentDataPath + "/" + file + ".json";
+
+        Debug.Log("LOAD" + fileName);
+
+        string s = "";
+        string line = "";
+        bool line2 = false;
+        using (StreamReader sr = File.OpenText(fileName))
+        {
+            while ((line = sr.ReadLine()) != null)
+            {
+                if (line2)
+                {
+                    s = line;
+                    break;
+                }
+                line2 = true;
+
+            }
+        }
+
+        string[] parts = s.Split(":");
+        return int.Parse(parts[1]);
     }
 
     // BFS ==========================
