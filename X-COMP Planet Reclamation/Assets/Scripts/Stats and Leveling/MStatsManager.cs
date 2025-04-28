@@ -28,7 +28,7 @@ public class MStatsManager : MonoBehaviour
         maxArmor = 5;
         if (playerName == null || playerName.Length == 0)
         {
-            playerName = "MissingName";
+            playerName = "Bob";
         }
         
 
@@ -291,6 +291,12 @@ public class MStatsManager : MonoBehaviour
     public void loadValues(int v)
     {
         string fileName = Application.persistentDataPath + "/stats" + v + ".json";
+
+        // If a new character is the level, skip.
+        if (!File.Exists(fileName))
+        {
+            return;
+        }
         Debug.Log("LOAD" + fileName);
 
         string s = "";
@@ -304,6 +310,7 @@ public class MStatsManager : MonoBehaviour
             }
         }
         CStats data = JsonUtility.FromJson<CStats>(s);
+        Debug.Log("Is Data Null: " + data == null);
 
         //this.playerName = playerName;
         //this.currentLevel = currentLevel;

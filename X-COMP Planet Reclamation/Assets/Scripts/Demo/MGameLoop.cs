@@ -52,14 +52,22 @@ public class MGameLoop : MonoBehaviour
         (Grid, Walls, BreakableWalls, BreakableWallsReverse, Players, Enemies) = GetComponent<MGenerateGrid>().GenerateGrid();
 
         Debug.Log(NextLevel);
+        Debug.Log(Players.Count);
 
         for (int v = 0; v < Players.Count; v++)
         {
-            if (MGameLoop.Instance.NextLevel == "V2_Level_1") Players[v].SetStatsManager(v, false);
-            else Players[v].SetStatsManager(v, true);
+            if (MGameLoop.Instance.NextLevel == "V2_Level_1") {
+                Players[v].SetStatsManager(v, false);
+            }
+
+            else {
+                Debug.Log("Setting Stats Manager");
+                Players[v].SetStatsManager(v, true);
+            }
 
             if (Players[v].statsManager.currentHealth <= 0) Players.RemoveAt(v);
         }
+
         foreach (var v in Enemies) { v.SetStatsManager(0, false); }
 
         ChangePlayer(0);
