@@ -35,13 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/V2_Level_2.unity
     guid: a0ee83dc70ce80a42b3ec7ee9412fcaf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: b5c0c6a57fd0c0546945cb066a2bf806
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 618d7c0c0d94efc4ca365039fe9daf69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stats Selection.unity
     guid: 8f7735b7893d6b84b9d5e1da50e2f832
   - enabled: 1
@@ -53,6 +53,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/level_transitioner.unity
     guid: d134fae5ace07af4f80b4c1d10dfc42e
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: c604c5a7a4a0fc3428abe75d411b5a73
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: ffc33e97b3da9d74db78e9aa34d74f7b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

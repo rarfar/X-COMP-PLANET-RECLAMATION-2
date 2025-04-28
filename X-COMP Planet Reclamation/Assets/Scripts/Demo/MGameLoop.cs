@@ -96,7 +96,7 @@ public class MGameLoop : MonoBehaviour
                 // LOSE CONDITION CODE
                 Debug.Log("YOU LOSE");
                 // Go to Gameover Scene
-                SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+                SceneManager.LoadScene("Defeat", LoadSceneMode.Single);
                
 
             }
@@ -105,17 +105,7 @@ public class MGameLoop : MonoBehaviour
                 // WIN CONDITION CODE
                 Debug.Log("YOU WIN");
 
-                int x = 0;
-                foreach(MActor p in Players)
-                {
-                    //SaveObject<MActor>(p, "player" + x);
-                    SaveObject<CStats>(p.statsManager.SaveObject(), "stats" + x);
-                    x++;
-                }
-
-
-                SaveObject<Integer>(new Integer(x), "num");
-                SceneManager.LoadScene("Stats Selection", LoadSceneMode.Single);
+                SceneManager.LoadScene("Victory", LoadSceneMode.Single);
             }
             GameOver = true;
             return;
