@@ -29,8 +29,8 @@ public class MGameLoop : MonoBehaviour
     public Dictionary<MShootable, (Vector2Int, Vector2Int)> BreakableWallsReverse; // value can be in either order
 
     // camera
-    private float CameraOffsetX;
-    private float CameraOffsetZ;
+    [SerializeField] private float CameraOffsetX;
+    [SerializeField] private float CameraOffsetZ;
 
     // Variable for other scripts
     public int CurrentSceneIndex;
