@@ -23,6 +23,7 @@ public class MStatsSelection : MonoBehaviour
     [SerializeField] Transform bar;
     [SerializeField] TMP_Text lvlup;
     [SerializeField] TMP_Text exp;
+    [SerializeField] TMP_Text points;
 
     [SerializeField] TMP_Text player;
     [SerializeField] Button prev;
@@ -43,7 +44,8 @@ public class MStatsSelection : MonoBehaviour
 
     [SerializeField] Button finish;
 
-    private int[] levelUpTable = new int[] {75, 200, 450, 1000};
+    // Remaining upgrade points for each player.
+    Dictionary<String, int> remainingPoints = new Dictionary<string, int>();
 
     public class StatManager
     {
@@ -205,15 +207,31 @@ public class MStatsSelection : MonoBehaviour
 
     public void valueClickMore(int stat)
     {
-        Debug.Log(pointer + " " + stat);
-        valueArray[pointer, stat] += 1;
-        barsValue[stat].text = valueArray[pointer, stat].ToString();
+        CStats stats = Stats[num];
+        if (remainingPoints[stats.playerName] > 0)
+        {
+            remainingPoints[stats.playerName] -= 1;
+            points.text = "Points: " + remainingPoints[stats.playerName].ToString();
+
+            valueArray[pointer, stat] += 1;
+            barsValue[stat].text = valueArray[pointer, stat].ToString();
+        }
+
     }
 
     public void valueClickLess(int stat)
     {
-        valueArray[pointer, stat] -= 1;
-        barsValue[stat].text = valueArray[pointer, stat].ToString();
+        CStats stats = Stats[num];
+        // Can't go over allocated amount for this level up
+        if (remainingPoints[stats.playerName] <= MLeveling.GetLevelingPoints(Stats[num].currentLevel))
+        {
+            remainingPoints[stats.playerName] += 1;
+            points.text = "Points: " + remainingPoints[stats.playerName].ToString();
+
+            valueArray[pointer, stat] -= 1;
+            barsValue[stat].text = valueArray[pointer, stat].ToString();
+        }
+        
     }
 
     public void loadPlayer(int num)
@@ -224,17 +242,28 @@ public class MStatsSelection : MonoBehaviour
         int lvl = stats.currentLevel;
         int totalexp = stats.totalEXP;
 
-        int tablePointer = 0;
-        while (levelUpTable[tablePointer] < totalexp)
+        if (MLeveling.CanLevelUp(lvl, totalexp))
         {
-            tablePointer++;
+            int newLevel = MLeveling.GetLevelFromEXP(totalexp);
+            lvlup.text = "Level UP: " + lvl.ToString() + " -> " + newLevel.ToString();
+            Stats[num].currentLevel = newLevel;
+
+            if (remainingPoints.TryAdd(stats.playerName, MLeveling.GetLevelingPoints(Stats[num].currentLevel)))
+            {
+                Debug.Log("Added Character to Stats");
+            }
+            points.text = "Points: " + remainingPoints[stats.playerName].ToString();
+
+        } else
+        {
+            lvlup.text = "Level: " + lvl.ToString();
+           
+            if (remainingPoints.TryAdd(stats.playerName, 0))
+            {
+                Debug.Log("Added Character to Stats");
+            }
+            points.text = "Points: 0";
         }
-
-        Debug.Log(levelUpTable[tablePointer] + " " + tablePointer);
-
-        lvlup.text = lvl + " -> " + (tablePointer).ToString().Substring(0);
-
-        Stats[num].currentLevel = tablePointer;
 
         barsValue[0].text = valueArray[num, 0].ToString();//stats.currentActionsUnits.ToString();
 

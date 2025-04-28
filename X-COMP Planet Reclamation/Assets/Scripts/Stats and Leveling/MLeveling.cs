@@ -33,6 +33,26 @@ public static class MLeveling
         }
     }
 
+    public static int GetLevelFromEXP(int totalEXP)
+    {
+        switch (totalEXP)
+        {
+            case (< 75):
+                return 1;
+            case (< 200):
+                return 2;
+            case (< 450):
+                return 3;
+            case (<1000):
+                return 4;
+            case (>1000):
+                return 5;
+            default:
+                Debug.LogError("Player Level is outside of the range (1 - 5)");
+                return -1;
+        }
+    }
+
     public static bool CanLevelUp(int currentLevel, int totalEXP)
     {
         return (totalEXP >= GetRequiredEXP(currentLevel));
