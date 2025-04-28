@@ -108,7 +108,11 @@ public class MBot
         );
 
         // Remove the bot's current position from the list of potential moves
-        MGameLoop.Instance.PotentialMoves.Remove(MGameLoop.Instance.CurrentActor.actor.Position);
+        //MGameLoop.Instance.PotentialMoves.Remove(MGameLoop.Instance.CurrentActor.actor.Position);
+        foreach (var enemy in MGameLoop.Instance.Enemies)
+        {
+            MGameLoop.Instance.PotentialMoves.Remove(enemy.Position);
+        }
 
         // Check if the bot is out of action points
         if (MGameLoop.Instance.CurrentActor.actor.GetStats().GetActionUnits() <= 0)

@@ -29,6 +29,11 @@ public class MUI : MonoBehaviour
         
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(MGameLoop.Instance.CurrentSceneIndex + 1);
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
