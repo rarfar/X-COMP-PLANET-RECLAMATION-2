@@ -207,7 +207,7 @@ public class MStatsSelection : MonoBehaviour
 
     public void valueClickMore(int stat)
     {
-        CStats stats = Stats[num];
+        CStats stats = Stats[pointer];
         if (remainingPoints[stats.playerName] > 0)
         {
             remainingPoints[stats.playerName] -= 1;
@@ -221,9 +221,9 @@ public class MStatsSelection : MonoBehaviour
 
     public void valueClickLess(int stat)
     {
-        CStats stats = Stats[num];
+        CStats stats = Stats[pointer];
         // Can't go over allocated amount for this level up
-        if (remainingPoints[stats.playerName] <= MLeveling.GetLevelingPoints(Stats[num].currentLevel))
+        if (remainingPoints[stats.playerName] <= MLeveling.GetLevelingPoints(Stats[pointer].currentLevel))
         {
             remainingPoints[stats.playerName] += 1;
             points.text = "Points: " + remainingPoints[stats.playerName].ToString();

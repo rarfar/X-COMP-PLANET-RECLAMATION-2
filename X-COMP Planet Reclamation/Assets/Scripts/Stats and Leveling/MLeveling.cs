@@ -28,7 +28,7 @@ public static class MLeveling
             case 5:
                 return -1;
             default:
-                Debug.LogError("Player Level is outside of the range (1 - 5)");
+                Debug.Log("Player Level is outside of the range (1 - 5)");
                 return -1;
         }
     }
@@ -48,7 +48,7 @@ public static class MLeveling
             case (>1000):
                 return 5;
             default:
-                Debug.LogError("Player Level is outside of the range (1 - 5)");
+                Debug.Log("Player Level is outside of the range (1 - 5)");
                 return -1;
         }
     }
@@ -71,7 +71,7 @@ public static class MLeveling
             case 5:
                 return Level5Points;
             default:
-                Debug.LogError("Player Level is outside of the range (2 - 5)");
+                Debug.Log("Player Level is outside of the range (2 - 5)");
                 return -1;
         }
 
